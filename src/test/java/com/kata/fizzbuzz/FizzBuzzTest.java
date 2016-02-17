@@ -6,7 +6,23 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static com.kata.fizzbuzz.Constants.*;
+
 public class FizzBuzzTest {
+
+    // -------------------------------------------------------------------------
+    // given argument <= 0, should return an empty list
+    // -------------------------------------------------------------------------
+
+    @Test
+    public void testFizzBuzzGivenNegativeShouldReturEmptyList() {
+        int given = 0;
+
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        List<String> result = fizzBuzz.proceed(given);
+
+        Assert.assertTrue(result.size() == 0);
+    }
 
     // -------------------------------------------------------------------------
     // given 3, should return 1, 2 and Fizz
@@ -14,11 +30,15 @@ public class FizzBuzzTest {
 
     @Test
     public void testFizzBuzzShouldReturnThreeItems() {
-        FizzBuzz fizzBuzz = new FizzBuzz();
+        int given = 3;
+        int expectedSize = 3;
+        List<String> expected = Arrays.asList("1", "2", FIZZ);
 
-        List<String> expected = Arrays.asList("1", "2", "Fizz");
-        List<String> actual = fizzBuzz.proceed(3);
-        Assert.assertEquals(expected, actual);
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        List<String> result = fizzBuzz.proceed(given);
+
+        Assert.assertEquals(expectedSize, result.size());
+        Assert.assertEquals(expected, result);
     }
 
     // -------------------------------------------------------------------------
@@ -27,25 +47,49 @@ public class FizzBuzzTest {
 
     @Test
     public void testFizzBuzzShouldReturnFiveItems() {
-        FizzBuzz fizzBuzz = new FizzBuzz();
+        int given = 5;
+        int expectedSize = 5;
+        List<String> expected = Arrays.asList("1", "2", FIZZ, "4", BUZZ);
 
-        List<String> expected = Arrays.asList("1", "2", "Fizz", "4", "Buzz");
-        List<String> actual = fizzBuzz.proceed(5);
-        Assert.assertEquals(expected, actual);
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        List<String> result = fizzBuzz.proceed(given);
+
+        Assert.assertEquals(expectedSize, result.size());
+        Assert.assertEquals(expected, result);
     }
 
     // -------------------------------------------------------------------------
-    // given 15, last element of the result should be Fizz Buzz
+    // given 10, should return 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz
+    // -------------------------------------------------------------------------
+
+    @Test
+    public void testFizzBuzzShouldReturnTenItems() {
+        int given = 10;
+        int expectedSize = 10;
+        List<String> expected = Arrays.asList("1", "2", FIZZ, "4", BUZZ, FIZZ,
+                "7", "8", FIZZ, BUZZ);
+
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        List<String> result = fizzBuzz.proceed(given);
+
+        Assert.assertEquals(expectedSize, result.size());
+        Assert.assertEquals(expected, result);
+    }
+
+    // -------------------------------------------------------------------------
+    // given 15, last element of the result list should be Fizz Buzz
     // -------------------------------------------------------------------------
 
     @Test
     public void testFizzBuzzGiven15SouhldReturnFizzBuzz() {
+        int given = 15;
+        int expectedSize = 15;
+
         FizzBuzz fizzBuzz = new FizzBuzz();
-        int position = 15;
-        List<String> actual = fizzBuzz.proceed(position);
+        List<String> result = fizzBuzz.proceed(given);
 
-        Assert.assertEquals(actual.get(position - 1), "Fizz Buzz");
-
+        Assert.assertEquals(expectedSize, result.size());
+        Assert.assertEquals(result.get(expectedSize - 1), FIZZ_BUZZ);
     }
 
 }

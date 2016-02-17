@@ -3,34 +3,32 @@ package com.kata.fizzbuzz;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FizzBuzz {
+import static com.kata.fizzbuzz.Constants.*;
 
-    private static final String FIZZ = "Fizz";
-    private static final String BUZZ = "Buzz";
-    private static final String FIZZ_BUZZ = FIZZ + " " + BUZZ;
+public class FizzBuzz {
 
     public FizzBuzz() {
         super();
     }
 
-    public List<String> proceed(int n) {
-        List<String> items = new ArrayList<String>();
-        for (int i = 1; i <= n; i++) {
-            items.add(getFizzBuzzValue(i));
+    public List<String> proceed(int arg) {
+        List<String> elements = new ArrayList<String>();
+        for (int i = 1; i <= arg; i++) {
+            elements.add(getFizzBuzzValue(i));
         }
 
-        return items;
+        return elements;
     }
 
-    private String getFizzBuzzValue(int i) {
-        if (i % 15 == 0) {
+    private String getFizzBuzzValue(int number) {
+        if (number % 15 == 0) {
             return FIZZ_BUZZ;
-        } else if (i % 3 == 0) {
+        } else if (number % 3 == 0) {
             return FIZZ;
-        } else if (i % 5 == 0) {
+        } else if (number % 5 == 0) {
             return BUZZ;
         } else {
-            return "" + i;
+            return String.valueOf(number);
         }
     }
 
