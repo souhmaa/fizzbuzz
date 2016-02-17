@@ -89,7 +89,7 @@ public class FizzBuzzTest {
         List<String> result = fizzBuzz.proceed(given);
 
         Assert.assertEquals(expectedSize, result.size());
-        Assert.assertEquals(result.get(expectedSize - 1), FIZZ_BUZZ);
+        Assert.assertEquals(FIZZ_BUZZ, result.get(expectedSize - 1));
     }
 
 }
